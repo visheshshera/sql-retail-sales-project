@@ -46,16 +46,11 @@ group by category,gender
 order by 1;
 
 -- Ans 7
-select year(sale_date) as yr,month(sale_date) as mnth,avg(total_sale) avg_monthly_sale
-from retail_sales
-group by yr,mnth
-order by avg_monthly_sale desc;
--- february and july are most profitable in 2023 amd 2022 respectively 
-
 select year(sale_date) as yr,month(sale_date) as mnth,avg(total_sale) avg_monthly_sale,
 rank() over(partition by year(sale_date) order by avg(total_sale) desc) as best_selling_month_rank
 from retail_sales
 group by yr,mnth;
+-- february and july are most profitable in 2023 amd 2022 respectively
 
 
 -- Ans 8
